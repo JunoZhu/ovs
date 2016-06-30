@@ -79,6 +79,102 @@
       </column>
     </group>
   </table>
+ <table name="Logical_Port_Chain" title="Logical port chain">
+    <p>
+      Each row represents one logical port chain
+    </p>
+
+    <column name="name">
+      <p>
+        A name for the logical chain.  This name has no special meaning or purpose
+        other than to provide convenience for human interaction with the ovn-nb
+        database.  There is no requirement for the name to be unique.  The
+        logical chains's UUID should be used as the unique identifier.
+      </p>
+    </column>
+    <group title="Options">
+      <column name="options">
+        This column provides key/value settings specific to the logical port
+        chain.  The type-specific options are described
+        individually below.
+      </column>
+    </group>
+    <column name="port_pair_groups">
+      <p>
+        The logical list of port pairs that the flow goes through.
+      </p>
+
+      <p>
+        It is an error for a port pair group to be empty
+      </p>
+    </column>
+    <group title="Common Columns">
+      <column name="external_ids">
+        See <em>External IDs</em> at the beginning of this document.
+      </column>
+    </group>
+  </table>
+
+ <table name="Logical_Port_Pair_Group" title="logical port pair groups">
+   <p>
+     An ordered port pair list
+   </p>
+   <column name="name">
+     <p> 
+       Logical port pair group name
+     </p>
+   </column>
+   <column name="port_pairs">
+     <p>
+       port pair for this group
+     </p>
+   </column>
+    <group title="Options">
+      <column name="options">
+        This column provides key/value settings specific to the logical port
+        pair group.  The type-specific options are described
+        individually below.
+      </column>
+    </group>
+    <group title="Common Columns">
+      <column name="external_ids">
+        See <em>External IDs</em> at the beginning of this document.
+      </column>
+    </group>
+ </table>
+ <table name="Logical_Port_Pair" title="logical port pairs">
+   <p>
+     Ports pairs defining the service
+   </p>
+   <column name="name">
+     <p> 
+       Logical port pair
+     </p>
+   </column>
+   <column name="outport">
+     <p>
+       out port for this port pair
+     </p>
+   </column>
+   <column name="inport">
+     <p>
+       in port for this port pair
+     </p>
+   </column>
+    <group title="Options">
+      <column name="options">
+        This column provides key/value settings specific to the logical port
+        pair.  The type-specific options are described
+        individually below.
+      </column>
+    </group>
+    <group title="Common Columns">
+      <column name="external_ids">
+        See <em>External IDs</em> at the beginning of this document.
+      </column>
+    </group>
+ </table>
+
 
   <table name="Logical_Switch_Port" title="L2 logical switch port">
     <p>
@@ -569,6 +665,11 @@
 
         <li>
           <code>drop</code>: Silently drop the packet.
+        </li>
+
+
+        <li>
+          <code>sfc</code>: Send the traffic to port chain.
         </li>
 
         <li>
